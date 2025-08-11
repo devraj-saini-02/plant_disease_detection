@@ -1,16 +1,9 @@
 # Plant Disease Detection App 🌿🧠
 
-This project uses a Convolutional Neural Network (CNN) to classify plant leaf diseases using the PlantVillage dataset.
+This project uses a Convolutional Neural Network (CNN) to classify plant leaf diseases
 
 ## Features
 - CNN-based classification
 - Trained on over 50,000 images
 - Real-time prediction using uploaded leaf images
 
-## How to Run
-1. Clone the repo
-2. Install dependencies
-3. Run the web app
-
-## Dataset Used
-- [PlantVillage Dataset](https://www.kaggle.com/datasets/emmarex/plantdisease)

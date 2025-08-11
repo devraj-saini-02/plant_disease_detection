@@ -1,9 +1,0 @@
-# Plant Disease Detection App 🌿🧠
-
-This project uses a Convolutional Neural Network (CNN) to classify plant leaf diseases
-
-## Features
-- CNN-based classification
-- Trained on over 50,000 images
-- Real-time prediction using uploaded leaf images
-

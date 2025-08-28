@@ -4,13 +4,22 @@ from tensorflow import keras
 import gradio as gr
 
 path = '../input/plantvillage-dataset/color'
-train_ds, test_ds = keras.utils.image_dataset_from_directory(
+train_ds = keras.utils.image_dataset_from_directory(
     path,
     image_size=(224, 224),
     batch_size=32,
     seed=123,
     validation_split=0.2,
-    subset='both'
+    subset='training'
+)
+
+test_ds = keras.utils.image_dataset_from_directory(
+    path,
+    image_size=(224, 224),
+    batch_size=32,
+    seed=123,
+    validation_split=0.2,
+    subset='validation'
 )
 
 classes = train_ds.class_names
@@ -43,6 +52,13 @@ model.compile(
     metrics=['accuracy']
 )
 
+history = model.fit(
+    train_ds,
+    validation_data=test_ds,
+    epochs=10
+)
+
+
 def predict_image(image):
     img = tf.image.resize(image, (224, 224))
     img = tf.expand_dims(img, 0) / 255.0
@@ -67,7 +83,5 @@ demo = gr.Interface(
     title="Plant Disease Detection",
     description="Upload a plant leaf image to identify the plant and detect if it's healthy or diseased."
 )
-
-if __name__ == "__main__":
-    demo.launch()
+demo.launch()
 
